@@ -3,7 +3,7 @@
 // A dex you can only read with signal is not a dex you carry. Everything is
 // precached on install, so it opens on a plane, in a basement, or on a phone
 // with no bars — which is the whole point of it being installable.
-const CACHE = 'rappdex-v1';
+const CACHE = 'rappdex-v2';
 const SHELL = ['./', './index.html', './mapp.json', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', (event) => {

@@ -106,6 +106,15 @@
       "houses": "Browser-native brainstem UI. Degradation is the DEFAULT: it runs with no local brainstem at all, because burrowing a grail brainstem needs extra user permissions.",
       "authority": false,
       "note": "Its API is same-origin by design (API='' on http/https; only file:// falls back to 127.0.0.1:7071), so it talks to whichever brainstem SERVED the page \u2014 parent on 7071, booted twin on 7081+. Served from Pages there is no brainstem (POST /chat -> 405) and it degrades to its browser-only path. A twin is local-first, so in that mode there is correctly NO twin: system_context injects nothing and the agent says how to plant one."
+    },
+    {
+      "repo": "kody-w/chat",
+      "layer": "membrane",
+      "side": "bones",
+      "houses": "Public bones served from Pages that locate the GOD layer without ever carrying it. Probes loopback for a burrowed brainstem and hands the user through to it.",
+      "authority": false,
+      "note": "The membrane made operable. Detection is an opaque no-cors GET: a 403 is an answer, silence is not \u2014 so it never reads a byte, never asks for X-Brainstem-Secret, and never proxies. On a sighting it opens http://localhost:<port>/ where the brainstem serves the same bones same-origin with every guard intact. A signpost, not a bridge. Verified end-to-end in Chrome 131 from the live https page against a real brainstem on 7071.",
+      "live": "https://kody-w.github.io/chat/"
     }
   ],
   "known_gaps": [
