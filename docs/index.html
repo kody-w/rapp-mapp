@@ -1,116 +1,153 @@
 <!doctype html><html lang=en><head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name=theme-color content="#0b0f19"><title>RAPPDEX — the RAPP map</title>
-<meta name=description content="Open the RAPP map wherever you are. A map, not a registry.">
+<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>RAPPDEX</title>
+<meta name=description content="Open the RAPP map wherever you are. Works offline.">
+<link rel=manifest href=manifest.webmanifest>
+<meta name=theme-color content="#0b0f19">
+<meta name=apple-mobile-web-app-capable content=yes>
+<meta name=mobile-web-app-capable content=yes>
+<meta name=apple-mobile-web-app-status-bar-style content=black-translucent>
+<meta name=apple-mobile-web-app-title content=RAPPDEX>
+<link rel=apple-touch-icon href=icon-180.png>
+<link rel=icon href=icon-192.png>
 <style>
-:root{--bg:#0b0f19;--fg:#e8ecf6;--mut:#8b94ad;--acc:#10b981;--cy:#00e5cc;--mg:#c084fc;--ln:#1c2436}
-*{box-sizing:border-box;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
-padding:0 18px calc(60px + env(safe-area-inset-bottom));max-width:760px;margin-inline:auto}
-header{padding:48px 0 6px;text-align:center}
-.k{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--acc);font-weight:700}
-h1{font-size:clamp(32px,9vw,50px);margin:12px 0 6px;letter-spacing:-.03em;
+:root{--bg:#0b0f19;--fg:#e8ecf6;--mut:#8b94ad;--acc:#10b981;--cy:#00e5cc;--mg:#c084fc;--am:#ffb020;--ln:#1c2436;--card:#111726}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{overscroll-behavior-y:none}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
+padding:0 16px calc(96px + env(safe-area-inset-bottom));max-width:720px;margin-inline:auto}
+header{padding:calc(20px + env(safe-area-inset-top)) 0 4px;text-align:center}
+.k{font-size:11px;letter-spacing:.34em;color:var(--acc);font-weight:800}
+h1{font-size:34px;margin:6px 0 2px;letter-spacing:-.03em;
 background:linear-gradient(180deg,#fff,#9fb4d6);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sub{color:var(--mut);font-size:14.5px;margin:0}
-.cmd{margin:26px 0;padding:16px 18px;background:#111726;border:1px solid var(--ln);border-radius:12px;
-font:14px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;color:#b8c2d8;overflow-x:auto}
-.cmd b{color:var(--cy);font-weight:600}
-.L{margin:34px 0}
-.L h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--cy);margin:0 0 12px}
-.e{display:block;padding:14px 16px;margin-bottom:9px;background:#111726;border:1px solid var(--ln);
-border-left:3px solid var(--cy);border-radius:10px;text-decoration:none;color:inherit}
-.e.vault{border-left-color:var(--mg)} .e.both{border-left-color:#ffb020}
-.e:hover{background:#151d30}
-.r{font-weight:650;font-size:15.5px;word-break:break-word}
-.au{color:#ffb020;margin-left:7px}
-.art{font-size:11px;color:var(--mut);border:1px solid var(--ln);border-radius:5px;padding:1px 6px;margin-left:8px;white-space:nowrap}
-.h{color:#b8c2d8;font-size:14.5px;margin-top:4px}
-.note{color:var(--mut);font-size:13.5px;margin-top:4px}
-.box{margin:34px 0;padding:22px;background:#111726;border:1px solid var(--ln);border-radius:14px}
-.box h2{margin:0 0 12px;font-size:19px}
-.box ul{margin:0;padding-left:20px;color:#b8c2d8;font-size:14.5px}
-.box li{margin-bottom:9px}
-.why{color:var(--mut);font-size:13px;margin-top:3px}
+.sub{color:var(--mut);font-size:13px;margin:0}
+.searchwrap{position:sticky;top:0;z-index:9;background:linear-gradient(180deg,var(--bg) 72%,transparent);
+padding:12px 0 10px;margin-top:8px}
+#q{width:100%;padding:13px 15px;font-size:16px;background:var(--card);color:var(--fg);
+border:1px solid var(--ln);border-radius:12px;outline:none}
+#q:focus{border-color:var(--acc)}
+.tabs{display:flex;gap:7px;overflow-x:auto;padding:9px 0 2px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;padding:7px 13px;font-size:13px;font-weight:600;background:var(--card);
+border:1px solid var(--ln);border-radius:999px;color:var(--mut);cursor:pointer;white-space:nowrap}
+.tab.on{background:var(--acc);border-color:var(--acc);color:#04120c}
+h2.L{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--cy);margin:22px 0 9px}
+.e{display:block;padding:13px 15px;margin-bottom:8px;background:var(--card);border:1px solid var(--ln);
+border-left:3px solid var(--cy);border-radius:11px;text-decoration:none;color:inherit}
+.e.vault{border-left-color:var(--mg)}.e.both{border-left-color:var(--am)}
+.e:active{background:#151d30}
+.r{font-weight:650;font-size:15px;word-break:break-word}
+.au{color:var(--am);margin-left:6px}
+.art{font-size:10.5px;color:var(--mut);border:1px solid var(--ln);border-radius:5px;padding:1px 5px;margin-left:6px;white-space:nowrap}
+.h{color:#b8c2d8;font-size:14px;margin-top:3px}
+.note{color:var(--mut);font-size:13px;margin-top:3px}
+.box{margin:22px 0;padding:18px;background:var(--card);border:1px solid var(--ln);border-radius:13px}
+.box h3{margin:0 0 10px;font-size:17px}
+.box ul{margin:0;padding-left:19px;color:#b8c2d8;font-size:14px}.box li{margin-bottom:8px}
 .warn{border-color:#3a2a14;background:#191308}
-footer{margin-top:44px;padding-top:22px;border-top:1px solid var(--ln);text-align:center;color:var(--mut);font-size:13.5px}
+.why{color:var(--mut);font-size:12.5px;margin-top:2px}
+.empty{text-align:center;color:var(--mut);padding:36px 0;font-size:14.5px}
+footer{margin-top:30px;padding-top:18px;border-top:1px solid var(--ln);text-align:center;color:var(--mut);font-size:12.5px}
 a{color:var(--cy)}
+#install{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));
+padding:14px;background:var(--acc);color:#04120c;border:0;border-radius:13px;font-size:15px;font-weight:700;
+display:none;max-width:688px;margin-inline:auto;z-index:20;box-shadow:0 8px 28px rgba(0,0,0,.5)}
+#off{position:fixed;left:0;right:0;bottom:0;padding:9px;background:var(--am);color:#1a1205;
+font-size:12.5px;font-weight:700;text-align:center;display:none;z-index:21}
 </style></head><body>
+
 <header><div class=k>RAPPDEX</div><h1>The RAPP map</h1>
-<p class=sub>10 surfaces &middot; opens wherever you are</p></header>
+<p class=sub id=count>loading…</p></header>
 
-<div class=cmd><b>curl</b> -fsSL https://raw.githubusercontent.com/kody-w/rapp-mapp/main/mapp -o mapp &amp;&amp; <b>chmod</b> +x mapp<br>
-./mapp &nbsp;<span style="color:#5a6480"># the dex, in your terminal</span><br>
-./mapp twin &nbsp;<span style="color:#5a6480"># look something up</span><br>
-./mapp --words &nbsp;<span style="color:#5a6480"># the Nine Words and the membrane</span></div>
+<div class=searchwrap>
+  <input id=q type=search placeholder="Search surfaces, layers, articles…" autocomplete=off autocorrect=off spellcheck=false>
+  <div class=tabs id=tabs></div>
+</div>
 
-    <section class="L">
-      <h2>◆ protocol</h2>
-      <a class="e bones" href="https://github.com/kody-w/rapp-1">
-        <div class="r">kody-w/rapp-1<span class="au" title="carries authority">★</span></div>
-        <div class="h">RAPP/1 — identity, canonicalization, the frame, the wire, the egg</div>
-      </a>
-    </section>
-    <section class="L">
-      <h2>§ governance</h2>
-      <a class="e bones" href="https://github.com/kody-w/RAPP">
-        <div class="r">kody-w/RAPP<span class="au" title="carries authority">★</span></div>
-        <div class="h">The Constitution (57 articles), the Lexicon, the kernel tree, ./plant</div>
-      </a>
-      <a class="e bones" href="https://github.com/kody-w/rapp-constitution">
-        <div class="r">kody-w/rapp-constitution</div>
-        <div class="h">Public mirror of the Constitution + the Bill of Rights. Drift-checked against upstream.</div><div class="note">↳ A projection. Upstream always wins.</div>
-      </a>
-    </section>
-    <section class="L">
-      <h2>⬢ kernel</h2>
-      <a class="e bones" href="https://github.com/kody-w/rapp-installer">
-        <div class="r">kody-w/rapp-installer<span class="au" title="carries authority">★</span></div>
-        <div class="h">The grail brainstem — the immutable kernel bytes</div>
-      </a>
-    </section>
-    <section class="L">
-      <h2>◐ membrane</h2>
-      <a class="e bones" href="https://github.com/kody-w/rapp-dog-hub">
-        <div class="r">kody-w/rapp-dog-hub<span class="art">Art. LVI</span></div>
-        <div class="h">The DOG layer: admission gate, on-device DOG/GOD splitter, agentspace simulation (sim/)</div>
-      </a>
-      <a class="e both" href="https://github.com/kody-w/openrappter">
-        <div class="r">kody-w/openrappter<span class="art">Art. LVI</span></div>
-        <div class="h">src/twin/ — the GOD half (vault at ~/.rapp/twin, outside every repo) + telephony</div>
-      </a>
-    </section>
-    <section class="L">
-      <h2>◉ memory</h2>
-      <a class="e vault" href="https://github.com/kody-w/rapp-secondbrain">
-        <div class="r">kody-w/rapp-secondbrain</div>
-        <div class="h">Tamper-evident local memory: contacts, calls, appointments, approvals</div>
-      </a>
-      <a class="e bones" href="https://github.com/kody-w/rapp-second-brain">
-        <div class="r">kody-w/rapp-second-brain</div>
-        <div class="h">The ecosystem&#x27;s own two-hemisphere brain — public face</div>
-      </a>
-    </section>
-    <section class="L">
-      <h2>✦ navigation</h2>
-      <a class="e bones" href="https://github.com/kody-w/rapp-spine">
-        <div class="r">kody-w/rapp-spine</div>
-        <div class="h">Situational router over the protocol surface</div>
-      </a>
-      <a class="e bones" href="https://github.com/kody-w/rapp-mapp">
-        <div class="r">kody-w/rapp-mapp</div>
-        <div class="h">This map</div>
-      </a>
-    </section>
+<main id=out></main>
 
-  <div class=box><h2>The words</h2>
-  <p style="color:#8b94ad;font-size:14px;margin:0 0 12px">kody-w/RAPP/LEXICON.md — the Nine Words</p>
-  <ul><li>An organism is a planted being (word 3). The verb is PLANT.</li><li>HATCH belongs to eggs (Article L), never to organisms.</li><li>The membrane splits every organism exactly once (word 5): BONES public, VAULT private.</li><li>The DOG is the bones walking. The GOD is bones + vault — the whole that CONTAINS the DOG.</li><li>A twin is not an organism (Article XLIX); it is a persistent AI presence.</li><li>A rappid is identity (word 4). A name is never identity — only a hash is.</li></ul></div>
+<div class=box><h3>The words</h3><ul id=words></ul></div>
+<div class="box warn"><h3>Open gaps</h3><ul id=gaps></ul></div>
+<div class=box><h3>A map, not a registry</h3><p id=auth style="color:#b8c2d8;font-size:14px;margin:0"></p></div>
 
-  <div class="box warn"><h2>Open gaps</h2><ul><li>The Article LVI surfaces are absent from rapp-spine&#x27;s crawl graph.<div class="why">Registration into a §13 registry needs estate-owner signing authority. Self-registering into a quarantined document would be the same false-authority claim that retired rapp-frame-net.</div></li></ul></div>
+<footer>Supersedes <a href="https://github.com/kody-w/rapp-map">rapp-map</a> — superseding is not deleting.<br>
+<a href="https://github.com/kody-w/rapp-mapp">source</a> · <a href="https://kody-w.github.io/rapp-constitution/">Bill of Rights</a></footer>
 
-  <div class=box><h2>This is a map, not a registry</h2>
-  <p style="color:#b8c2d8;font-size:14.5px;margin:0">This is a MAP, not a registry. It confers no trust, establishes no owner acceptance, and MUST NOT be consumed as a RAPP/1 §13 authenticated registry. A §13 entry requires estate-owner acceptance and signing authority. The protocol authority is kody-w/rapp-1; the governance authority is kody-w/RAPP/CONSTITUTION.md. Where this map and either authority disagree, the authority wins and this map is the defect.</p></div>
+<button id=install>Add RAPPDEX to your home screen</button>
+<div id=off>offline — showing the last map you loaded</div>
 
-<footer>Supersedes <a href="https://github.com/kody-w/rapp-map">rapp-map</a> &mdash; superseding is not deleting.<br>
-<a href="https://github.com/kody-w/rapp-mapp">source</a> &middot; <a href="https://kody-w.github.io/rapp-constitution/">Bill of Rights</a></footer>
-</body></html>
+<script>
+const GLYPH={protocol:'\u25C6',governance:'\u00A7',kernel:'\u2B22',membrane:'\u25D0',memory:'\u25C9',navigation:'\u2726'};
+const ORDER=['protocol','governance','kernel','membrane','memory','navigation'];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let MAP=null, layer=null;
+
+function render(){
+  if(!MAP) return;
+  const q=document.getElementById('q').value.trim().toLowerCase();
+  let list=MAP.surfaces;
+  if(layer) list=list.filter(s=>s.layer===layer);
+  if(q) list=list.filter(s=>JSON.stringify(s).toLowerCase().includes(q));
+
+  document.getElementById('count').textContent=
+    list.length+' of '+MAP.surfaces.length+' surfaces'+(layer?' · '+layer:'');
+
+  const out=document.getElementById('out');
+  if(!list.length){out.innerHTML='<div class=empty>Nothing matches.<br>Try <b>twin</b>, <b>membrane</b>, or clear the search.</div>';return;}
+
+  const groups={};
+  list.forEach(s=>(groups[s.layer]=groups[s.layer]||[]).push(s));
+  out.innerHTML=Object.keys(groups)
+    .sort((a,b)=>(ORDER.indexOf(a)+99)%100-(ORDER.indexOf(b)+99)%100)
+    .map(L=>'<h2 class=L>'+(GLYPH[L]||'\u00B7')+' '+esc(L)+'</h2>'+groups[L].map(s=>
+      '<a class="e '+(s.side||'bones')+'" href="https://github.com/'+esc(s.repo)+'">'+
+      '<div class=r>'+esc(s.repo)+(s.authority?'<span class=au title="carries authority">\u2605</span>':'')+
+      (s.article?'<span class=art>Art. '+esc(s.article)+'</span>':'')+'</div>'+
+      '<div class=h>'+esc(s.houses)+'</div>'+
+      (s.note?'<div class=note>\u21B3 '+esc(s.note)+'</div>':'')+'</a>').join('')).join('');
+}
+
+function boot(map){
+  MAP=map;
+  try{localStorage.setItem('rappdex',JSON.stringify(map));}catch(e){}
+  const tabs=document.getElementById('tabs');
+  const layers=[...new Set(map.surfaces.map(s=>s.layer))]
+    .sort((a,b)=>(ORDER.indexOf(a)+99)%100-(ORDER.indexOf(b)+99)%100);
+  tabs.innerHTML='<div class="tab on" data-l="">all</div>'+
+    layers.map(L=>'<div class=tab data-l="'+L+'">'+(GLYPH[L]||'')+' '+L+'</div>').join('');
+  tabs.onclick=e=>{
+    const t=e.target.closest('.tab'); if(!t)return;
+    layer=t.dataset.l||null;
+    [...tabs.children].forEach(c=>c.classList.toggle('on',c===t));
+    render();
+  };
+  document.getElementById('words').innerHTML=map.vocabulary.rules.map(r=>'<li>'+esc(r)+'</li>').join('');
+  document.getElementById('gaps').innerHTML=(map.known_gaps||[]).filter(g=>g.status==='open')
+    .map(g=>'<li>'+esc(g.gap)+'<div class=why>'+esc(g.why_not_fixed||'')+'</div></li>').join('');
+  document.getElementById('auth').textContent=map.authority_note;
+  render();
+}
+
+document.getElementById('q').addEventListener('input',render);
+
+// Network first so the dex is current; last-known map if there is no signal.
+fetch('mapp.json',{cache:'no-cache'}).then(r=>r.json()).then(boot).catch(()=>{
+  const cached=localStorage.getItem('rappdex');
+  if(cached){document.getElementById('off').style.display='block';boot(JSON.parse(cached));}
+  else document.getElementById('out').innerHTML='<div class=empty>Could not load the map.</div>';
+});
+
+if('serviceWorker' in navigator)
+  addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+
+// Android/desktop get a real install button; iOS uses Share > Add to Home Screen.
+let prompt=null;
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();prompt=e;
+  document.getElementById('install').style.display='block';});
+document.getElementById('install').onclick=async()=>{
+  if(!prompt)return; prompt.prompt(); await prompt.userChoice;
+  prompt=null; document.getElementById('install').style.display='none';
+};
+addEventListener('appinstalled',()=>document.getElementById('install').style.display='none');
+</script></body></html>
