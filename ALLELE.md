@@ -52,6 +52,25 @@ Rarity becomes **honest work**: to get a rare allele you mint identities until
 one lands, exactly like a vanity address. The scarcity is real because the
 electricity was real.
 
+## The allele is the collectible
+
+The trait is the *slot*; the **allele is the thing you have**. You do not collect
+organisms — an organism is a being, and beings are not inventory. You collect
+the alleles your organisms turned out to carry.
+
+That reading is what makes the whole design hold together:
+
+- an allele is **had, never traded** — it is a property of an identity, and
+  identity is mint-once (§6.2), so it cannot be detached and sold
+- two organisms may carry the **same allele**, and that is a real relation
+  between them — a kinship you can verify without either one disclosing anything
+- a collection is a **set of alleles across your planted organisms**, which grows
+  by planting, not by buying
+- rarity is a fact about the allele, not a rank of its owner
+
+So the sentence is *"I have a mythic glow"*, not *"my organism is mythic"*. The
+organism is not the prize. The allele is.
+
 ## Traits
 
 Each trait reads a different slice of the tail, so they are independent:
