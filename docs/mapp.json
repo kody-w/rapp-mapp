@@ -103,9 +103,9 @@
       "repo": "kody-w/vbrainstem",
       "layer": "navigation",
       "side": "bones",
-      "houses": "Browser front-end for a local brainstem on :7071; lists agents from RAR with sha256 verification",
+      "houses": "Browser-native brainstem UI. Degradation is the DEFAULT: it runs with no local brainstem at all, because burrowing a grail brainstem needs extra user permissions.",
       "authority": false,
-      "note": "Hosted at kody-w.github.io it CANNOT reach a local brainstem \u2014 cross-origin browser requests are refused (403) without X-Brainstem-Secret. That is the control working: it stops any website scripting your brainstem. The same-origin path is the brainstem's own bundled UI at http://127.0.0.1:7071/."
+      "note": "Its API is same-origin by design (API='' on http/https; only file:// falls back to 127.0.0.1:7071), so it talks to whichever brainstem SERVED the page \u2014 parent on 7071, booted twin on 7081+. Served from Pages there is no brainstem (POST /chat -> 405) and it degrades to its browser-only path. A twin is local-first, so in that mode there is correctly NO twin: system_context injects nothing and the agent says how to plant one."
     }
   ],
   "known_gaps": [
@@ -121,10 +121,10 @@
       "why_not_fixed": "Its committed evidence is history. Superseding is not deleting."
     },
     {
-      "gap": "Article LVI agents (twin_agent.py, phone_agent.py) are not published to RAR's @kody-w namespace.",
+      "gap": "Article LVI agents are not published to RAR's @kody-w namespace.",
       "status": "open",
       "owner_action": true,
-      "why_not_fixed": "Same as the spine gap: publishing is the owner's to do. They satisfy vbrainstem's isLoadableAgent contract (filename, sha256) and hot-load correctly into a live brainstem \u2014 they are simply not discoverable from RAR yet."
+      "why_not_fixed": "They satisfy vbrainstem's isLoadableAgent contract (filename + 64-hex sha256) and hot-load correctly into a live brainstem \u2014 verified 14->15 agents with no restart. They are simply not discoverable from RAR yet, and publishing is the owner's to do."
     }
   ]
 }
