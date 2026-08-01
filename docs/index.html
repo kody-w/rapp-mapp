@@ -1,0 +1,116 @@
+<!doctype html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name=theme-color content="#0b0f19"><title>RAPPDEX — the RAPP map</title>
+<meta name=description content="Open the RAPP map wherever you are. A map, not a registry.">
+<style>
+:root{--bg:#0b0f19;--fg:#e8ecf6;--mut:#8b94ad;--acc:#10b981;--cy:#00e5cc;--mg:#c084fc;--ln:#1c2436}
+*{box-sizing:border-box;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
+padding:0 18px calc(60px + env(safe-area-inset-bottom));max-width:760px;margin-inline:auto}
+header{padding:48px 0 6px;text-align:center}
+.k{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--acc);font-weight:700}
+h1{font-size:clamp(32px,9vw,50px);margin:12px 0 6px;letter-spacing:-.03em;
+background:linear-gradient(180deg,#fff,#9fb4d6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mut);font-size:14.5px;margin:0}
+.cmd{margin:26px 0;padding:16px 18px;background:#111726;border:1px solid var(--ln);border-radius:12px;
+font:14px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;color:#b8c2d8;overflow-x:auto}
+.cmd b{color:var(--cy);font-weight:600}
+.L{margin:34px 0}
+.L h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--cy);margin:0 0 12px}
+.e{display:block;padding:14px 16px;margin-bottom:9px;background:#111726;border:1px solid var(--ln);
+border-left:3px solid var(--cy);border-radius:10px;text-decoration:none;color:inherit}
+.e.vault{border-left-color:var(--mg)} .e.both{border-left-color:#ffb020}
+.e:hover{background:#151d30}
+.r{font-weight:650;font-size:15.5px;word-break:break-word}
+.au{color:#ffb020;margin-left:7px}
+.art{font-size:11px;color:var(--mut);border:1px solid var(--ln);border-radius:5px;padding:1px 6px;margin-left:8px;white-space:nowrap}
+.h{color:#b8c2d8;font-size:14.5px;margin-top:4px}
+.note{color:var(--mut);font-size:13.5px;margin-top:4px}
+.box{margin:34px 0;padding:22px;background:#111726;border:1px solid var(--ln);border-radius:14px}
+.box h2{margin:0 0 12px;font-size:19px}
+.box ul{margin:0;padding-left:20px;color:#b8c2d8;font-size:14.5px}
+.box li{margin-bottom:9px}
+.why{color:var(--mut);font-size:13px;margin-top:3px}
+.warn{border-color:#3a2a14;background:#191308}
+footer{margin-top:44px;padding-top:22px;border-top:1px solid var(--ln);text-align:center;color:var(--mut);font-size:13.5px}
+a{color:var(--cy)}
+</style></head><body>
+<header><div class=k>RAPPDEX</div><h1>The RAPP map</h1>
+<p class=sub>10 surfaces &middot; opens wherever you are</p></header>
+
+<div class=cmd><b>curl</b> -fsSL https://raw.githubusercontent.com/kody-w/rapp-mapp/main/mapp -o mapp &amp;&amp; <b>chmod</b> +x mapp<br>
+./mapp &nbsp;<span style="color:#5a6480"># the dex, in your terminal</span><br>
+./mapp twin &nbsp;<span style="color:#5a6480"># look something up</span><br>
+./mapp --words &nbsp;<span style="color:#5a6480"># the Nine Words and the membrane</span></div>
+
+    <section class="L">
+      <h2>◆ protocol</h2>
+      <a class="e bones" href="https://github.com/kody-w/rapp-1">
+        <div class="r">kody-w/rapp-1<span class="au" title="carries authority">★</span></div>
+        <div class="h">RAPP/1 — identity, canonicalization, the frame, the wire, the egg</div>
+      </a>
+    </section>
+    <section class="L">
+      <h2>§ governance</h2>
+      <a class="e bones" href="https://github.com/kody-w/RAPP">
+        <div class="r">kody-w/RAPP<span class="au" title="carries authority">★</span></div>
+        <div class="h">The Constitution (57 articles), the Lexicon, the kernel tree, ./plant</div>
+      </a>
+      <a class="e bones" href="https://github.com/kody-w/rapp-constitution">
+        <div class="r">kody-w/rapp-constitution</div>
+        <div class="h">Public mirror of the Constitution + the Bill of Rights. Drift-checked against upstream.</div><div class="note">↳ A projection. Upstream always wins.</div>
+      </a>
+    </section>
+    <section class="L">
+      <h2>⬢ kernel</h2>
+      <a class="e bones" href="https://github.com/kody-w/rapp-installer">
+        <div class="r">kody-w/rapp-installer<span class="au" title="carries authority">★</span></div>
+        <div class="h">The grail brainstem — the immutable kernel bytes</div>
+      </a>
+    </section>
+    <section class="L">
+      <h2>◐ membrane</h2>
+      <a class="e bones" href="https://github.com/kody-w/rapp-dog-hub">
+        <div class="r">kody-w/rapp-dog-hub<span class="art">Art. LVI</span></div>
+        <div class="h">The DOG layer: admission gate, on-device DOG/GOD splitter, agentspace simulation (sim/)</div>
+      </a>
+      <a class="e both" href="https://github.com/kody-w/openrappter">
+        <div class="r">kody-w/openrappter<span class="art">Art. LVI</span></div>
+        <div class="h">src/twin/ — the GOD half (vault at ~/.rapp/twin, outside every repo) + telephony</div>
+      </a>
+    </section>
+    <section class="L">
+      <h2>◉ memory</h2>
+      <a class="e vault" href="https://github.com/kody-w/rapp-secondbrain">
+        <div class="r">kody-w/rapp-secondbrain</div>
+        <div class="h">Tamper-evident local memory: contacts, calls, appointments, approvals</div>
+      </a>
+      <a class="e bones" href="https://github.com/kody-w/rapp-second-brain">
+        <div class="r">kody-w/rapp-second-brain</div>
+        <div class="h">The ecosystem&#x27;s own two-hemisphere brain — public face</div>
+      </a>
+    </section>
+    <section class="L">
+      <h2>✦ navigation</h2>
+      <a class="e bones" href="https://github.com/kody-w/rapp-spine">
+        <div class="r">kody-w/rapp-spine</div>
+        <div class="h">Situational router over the protocol surface</div>
+      </a>
+      <a class="e bones" href="https://github.com/kody-w/rapp-mapp">
+        <div class="r">kody-w/rapp-mapp</div>
+        <div class="h">This map</div>
+      </a>
+    </section>
+
+  <div class=box><h2>The words</h2>
+  <p style="color:#8b94ad;font-size:14px;margin:0 0 12px">kody-w/RAPP/LEXICON.md — the Nine Words</p>
+  <ul><li>An organism is a planted being (word 3). The verb is PLANT.</li><li>HATCH belongs to eggs (Article L), never to organisms.</li><li>The membrane splits every organism exactly once (word 5): BONES public, VAULT private.</li><li>The DOG is the bones walking. The GOD is bones + vault — the whole that CONTAINS the DOG.</li><li>A twin is not an organism (Article XLIX); it is a persistent AI presence.</li><li>A rappid is identity (word 4). A name is never identity — only a hash is.</li></ul></div>
+
+  <div class="box warn"><h2>Open gaps</h2><ul><li>The Article LVI surfaces are absent from rapp-spine&#x27;s crawl graph.<div class="why">Registration into a §13 registry needs estate-owner signing authority. Self-registering into a quarantined document would be the same false-authority claim that retired rapp-frame-net.</div></li></ul></div>
+
+  <div class=box><h2>This is a map, not a registry</h2>
+  <p style="color:#b8c2d8;font-size:14.5px;margin:0">This is a MAP, not a registry. It confers no trust, establishes no owner acceptance, and MUST NOT be consumed as a RAPP/1 §13 authenticated registry. A §13 entry requires estate-owner acceptance and signing authority. The protocol authority is kody-w/rapp-1; the governance authority is kody-w/RAPP/CONSTITUTION.md. Where this map and either authority disagree, the authority wins and this map is the defect.</p></div>
+
+<footer>Supersedes <a href="https://github.com/kody-w/rapp-map">rapp-map</a> &mdash; superseding is not deleting.<br>
+<a href="https://github.com/kody-w/rapp-mapp">source</a> &middot; <a href="https://kody-w.github.io/rapp-constitution/">Bill of Rights</a></footer>
+</body></html>
