@@ -5,6 +5,22 @@
 > form of a heritable trait — the genetics word, for the being that already has
 > a biology.
 
+## The one-line version
+
+> **Alleles are to this ecosystem what pets are to Adopt Me.**
+
+That is the whole product framing. Adopt Me is not really a game about a house;
+it is a game about the pet you got, how rare it turned out, and the fact that
+everyone can see it. The pet is the unit of attachment, the unit of identity,
+and the unit of conversation.
+
+The allele is that unit here. Not the organism — an organism is a being, and
+beings are not inventory. Not the repo, not the twin, not the frame. **The
+allele is the thing you got, the thing you show, and the thing you did not
+choose.**
+
+Everything below is downstream of taking that seriously.
+
 ## The pattern being borrowed
 
 Adopt Me works because a pet is **yours specifically**: it hatched a certain
