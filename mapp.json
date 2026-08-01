@@ -15,13 +15,15 @@
       "The membrane splits every organism exactly once (word 5): BONES public, VAULT private.",
       "The DOG is the bones walking. The GOD is bones + vault \u2014 the whole that CONTAINS the DOG.",
       "A twin is not an organism (Article XLIX); it is a persistent AI presence.",
-      "A rappid is identity (word 4). A name is never identity \u2014 only a hash is."
+      "A rappid is identity (word 4). A name is never identity \u2014 only a hash is.",
+      "The brainstem is blood, bones and connective tissue \u2014 the living substrate. It is bones; its .brainstem_data/ is vault. No change needed: the grail is the grail."
     ]
   },
   "membrane": {
     "bones": "Public surfaces. Their exhaust is the DOG \u2014 safe to publish by construction.",
     "vault": "Private flesh. Local-first, never on a remote. Bones + vault is the GOD.",
-    "law": "Public flows down; private never flows on its own (Art. XLVIII, Art. LVI)."
+    "law": "Public flows down; private never flows on its own (Art. XLVIII, Art. LVI).",
+    "brainstem": "The brainstem is the living substrate \u2014 blood, bones and connective tissue. It is bones-side: the engine, the loader, the wire. Its .brainstem_data/ is vault-side. So a brainstem is already a whole organism across the membrane, and needs no change to fit this pattern. The grail is the grail."
   },
   "surfaces": [
     {
